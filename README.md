@@ -18,4 +18,4 @@
 
 ### 访问量
 
-![Profile views](https://komarev.com/ghpvc/?username=passerby_douyin_danmu)
+![Profile views](https://komarev.com/ghpvc/?username=passerby)
