@@ -18,5 +18,4 @@
 
 ### 访问量
 
-![](http://profile-counter.glitch.me/passerby-b/count.svg)
-![Profile views](https://komarev.com/ghpvc/?username=passerby)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/passerby-b/douyin_danmu)
