@@ -18,4 +18,4 @@
 
 ### 访问量
 
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/passerby-b/douyin_danmu)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/passerby/douyin_danmu)
