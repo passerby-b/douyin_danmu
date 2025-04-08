@@ -34,18 +34,18 @@ const uuid = require('uuid');
             const url = route.request().url();
             const request = route.request();
             const resourceType = request.resourceType();
-            if (resourceType == 'image' || resourceType == 'media') {
+            if (resourceType == 'image' || resourceType == 'media' || url.includes('.flv') || url.includes('/webcast/assets/effects/')) {
                 //console.log(`阻止资源加载: ${url}`);
                 route.abort();  // 阻止加载图片和视频
             }
-            else if (url.includes('.js')) {
+            else if (url.includes('webcast/douyin_live/chunks') && url.includes('.js')) {
                 // 获取原始响应内容
                 const response = await route.fetch();
                 let originalBody = await response.text();
                 if (originalBody.includes('取消关注了主播') && originalBody.includes('送出了')) {
                     //console.log(url);
                     originalBody = originalBody.replace('"use strict";', `"use strict";console.log('1111：js注入成功!');`);
-                    originalBody = originalBody.replaceAll('(0,h.Pi)(e=>{', '(0,h.Pi)(e=>{console.log("0000："+JSON.stringify(e));');
+                    originalBody = originalBody.replaceAll('let{message:t}=e,', ' console.log("0000：" + JSON.stringify(e)); let{message:t}=e,');
                     // 返回修改后的内容
                     await route.fulfill({
                         status: 200,
