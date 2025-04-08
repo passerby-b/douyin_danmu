@@ -83,13 +83,13 @@ const uuid = require('uuid');
                 msg_ids.push(obj.message.msg_id);
 
                 if (obj.message.method == 'WebcastChatMessage')
-                    console.log(`【${obj.message.payload.user.nickname}】 ${obj.message.payload.content} `);//聊天消息
+                    console.log(`【弹幕】${obj.message.payload.user.nickname}：${obj.message.payload.content} `);//聊天消息
                 if (obj.message.method == 'WebcastMemberMessage')
-                    console.log(`【${obj.message.payload.user.nickname}】 来了`);//来人消息
+                    console.log(`【入场】${obj.message.payload.user.nickname}：来了`);//来人消息
                 if (obj.message.method == 'WebcastLikeMessage')
-                    console.log(`【${obj.message.payload.user.nickname}】 点赞`);//点赞消息
+                    console.log(`【点赞】${obj.message.payload.user.nickname}：点赞`);//点赞消息
                 if (obj.message.method == 'WebcastGiftMessage')
-                    console.log(`【${obj.message.payload.user.nickname}】 ${obj.message.payload.common.describe.split(':')[1]} `);//礼物消息
+                    console.log(`【礼物】${obj.message.payload.user.nickname}：${obj.message.payload.common.describe.split(':')[1]} `);//礼物消息
 
             }
         });
