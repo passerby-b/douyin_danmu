@@ -45,7 +45,9 @@ const uuid = require('uuid');
                 if (originalBody.includes('取消关注了主播') && originalBody.includes('送出了')) {
                     //console.log(url);
                     originalBody = originalBody.replace('"use strict";', `"use strict";console.log('1111：js注入成功!');`);
-                    originalBody = originalBody.replaceAll('let{message:t}=e,', ' console.log("0000：" + JSON.stringify(e)); let{message:t}=e,');
+                    const regex = /let\s*\{\s*message\s*:\s*([a-zA-Z])\s*\}\s*=\s*([a-zA-Z])\s*;?/g;
+                    const replacement = 'console.log("0000：" + JSON.stringify($2));let{message:$1}=$2';
+                    originalBody = originalBody.replace(regex, replacement);
                     // 返回修改后的内容
                     await route.fulfill({
                         status: 200,
