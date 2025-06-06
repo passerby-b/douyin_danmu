@@ -117,8 +117,10 @@ const uuid = require('uuid');
 
         setInterval(async () => {
             //随机移动鼠标防止睡眠
-            await page.mouse.move(Math.floor(Math.random() * 1000) + 1, Math.floor(Math.random() * 500) + 1);
-            //console.log('*************随机移动鼠标防止睡眠', Math.floor(Math.random() * 1000) + 1, Math.floor(Math.random() * 500) + 1);
+            if (browser.isConnected()) {
+                await page.mouse.move(Math.floor(Math.random() * 1000) + 1, Math.floor(Math.random() * 500) + 1);
+                //console.log('*************随机移动鼠标防止睡眠', Math.floor(Math.random() * 1000) + 1, Math.floor(Math.random() * 500) + 1);
+            }
         }, 1000 * 60);
 
         process.on('exit', async () => {
