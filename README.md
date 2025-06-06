@@ -1,7 +1,10 @@
 原理是通过浏览器自动化微软palywright在后台开个浏览器,打开直播页面,通过js注入把解密后的ws弹幕信息输出,简单粗暴,不用关心解密过程,
-1.下载源码后在当前文件夹输入cmd命令安装依赖包: npm i
-2.cmd输入npx playwright install 安装浏览器自动化驱动
-3.在当前文件夹cmd输入 node app.js 运行程序
+1.下载源码后在当前文件夹输入cmd命令安装依赖包: npm i  
+
+2.cmd输入npx playwright install 安装浏览器自动化驱动  
+
+3.在当前文件夹cmd输入 node app.js 运行程序  
+
 
 ![QQ截图20250402170435](https://github.com/user-attachments/assets/32294de2-5938-4a04-be6a-abe7bc6bcd84)
 
