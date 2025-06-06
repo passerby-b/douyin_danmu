@@ -25,7 +25,8 @@ const { chromium, firefox, webkit, devices } = require('playwright');
                 //console.log(`阻止资源加载: ${url}`);
                 route.abort();  // 阻止加载图片和视频
             }
-            else if (url.includes('https://a.msstatic.com/huya/main3/assets/modules/chat/') && url.includes('.js')) {
+            else if (url.includes('.js')) {
+                //console.log(url);
                 // 获取原始响应内容
                 const response = await route.fetch();
                 let originalBody = await response.text();
@@ -36,7 +37,7 @@ const { chromium, firefox, webkit, devices } = require('playwright');
                     console.log = iframe.contentWindow.console.log.bind(window.console);
                     console.log('1111：js注入成功!');`
                     originalBody = jscode + originalBody;
-                    originalBody = originalBody.replaceAll('t.prototype.__showMessage=function(e){', `t.prototype.__showMessage=function(e){console.log("0000：" + JSON.stringify(e)); `);
+                    originalBody = originalBody.replaceAll('.prototype.__showMessage=function(e){', `.prototype.__showMessage=function(e){console.log("0000：" + JSON.stringify(e)); `);
 
                     // 返回修改后的内容
                     await route.fulfill({
@@ -71,7 +72,7 @@ const { chromium, firefox, webkit, devices } = require('playwright');
             }
         });
 
-        await page.goto('https://www.huya.com/baozha');//改成自己想看的主播直播地址
+        await page.goto('https://www.huya.com/216357');//改成自己想看的主播直播地址
         await page.waitForTimeout(1000 * 5); // 等待 5 秒
 
 
