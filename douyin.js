@@ -59,6 +59,19 @@ const uuid = require('uuid');
                     route.continue();
                 }
             }
+            else if (url.includes('/webcast/room/web/enter/?')) {
+                const response = await route.fetch();
+                let originalBody = await response.text();
+                let data = JSON.parse(originalBody);
+                console.log(`直播间:${data?.data?.user?.nickname} 开播状态: ${data?.data?.data[0]?.status == 2 ? '直播中' : '已结束'}`);
+                if (data?.data?.data[0]?.status != 2) {
+                    console.log('直播已结束,退出程序....');
+                    await browser.close();
+                    return;
+                }
+                route.continue();
+
+            }
             else {
                 route.continue();  // 继续加载其他资源
             }
@@ -96,8 +109,8 @@ const uuid = require('uuid');
             }
         });
 
-        await page.goto('https://live.douyin.com/XH1818');//改成自己想看的主播直播地址
-        await page.waitForTimeout(1000 * 5); // 等待 5 秒
+        await page.goto('https://live.douyin.com/XH1818', { waitUntil: 'domcontentloaded' });//改成自己想看的主播直播地址
+        //await page.waitForTimeout(1000 * 5); // 等待 5 秒
 
         // const element = await page.locator('.basicPlayer');
         // await element.waitFor({ timeout: 1000 * 5 }); // 等待元素出现
