@@ -96,24 +96,24 @@ const uuid = require('uuid');
             }
         });
 
-        await page.goto('https://live.douyin.com/812195156626');//改成自己想看的主播直播地址
+        await page.goto('https://live.douyin.com/XH1818');//改成自己想看的主播直播地址
         await page.waitForTimeout(1000 * 5); // 等待 5 秒
 
-        const element = await page.locator('.basicPlayer');
-        await element.waitFor({ timeout: 1000 * 5 }); // 等待元素出现
-        const text = await element.textContent();
-        if (text.includes('直播已结束')) {
-            console.log('直播已结束,退出程序....');
-            await browser.close();
-            return;
-        }
+        // const element = await page.locator('.basicPlayer');
+        // await element.waitFor({ timeout: 1000 * 5 }); // 等待元素出现
+        // const text = await element.textContent();
+        // if (text.includes('直播已结束')) {
+        //     console.log('直播已结束,退出程序....');
+        //     await browser.close();
+        //     return;
+        // }
 
-        await page.evaluate(() => {
-            const elements = document.querySelectorAll('.basicPlayer');
-            elements.forEach(element => {
-                element.remove();
-            });
-        });
+        // await page.evaluate(() => {
+        //     const elements = document.querySelectorAll('.basicPlayer');
+        //     elements.forEach(element => {
+        //         element.remove();
+        //     });
+        // });
 
         setInterval(async () => {
             //随机移动鼠标防止睡眠
